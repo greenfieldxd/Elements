@@ -31,11 +31,10 @@ namespace Systems
 
       private ElementComponent CreateElement(ElementType type)
       {
-         var elementConfig = Config.ElementConfigs.FirstOrDefault(x => x.Type == type);
-         if (elementConfig == null) return null;
+         var prefab = Config.ElementPrefabs.FirstOrDefault(x => x.Type == type);
+         if (prefab == null) return null;
          
-         var element = Instantiate(elementConfig.Prefab, Vector2.zero, quaternion.identity);
-         element.type = elementConfig.Type;
+         var element = Instantiate(prefab, Vector2.zero, quaternion.identity);
          return element;
       }
    }

@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a59db0b471a854aaf215da0d9d4767, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: -6310575240015827211, guid: 683e60eba523c014ea7642ce95fc430f, type: 3}
+  elementPrefabs:
+  - {fileID: -6310575240015827211, guid: 683e60eba523c014ea7642ce95fc430f, type: 3}
+  - {fileID: -6310575240015827211, guid: 142e4b41bffd3d1419fb483d8fa8c060, type: 3}
+  elementConfigs:
+  - {fileID: 11400000, guid: 0b0a64d6a26db7e4fbf25e20e0648ce0, type: 2}
+  - {fileID: 11400000, guid: aee93e81710e6c2429548380d2787d6b, type: 2}
   levels:
   - {fileID: 8570658146234786576, guid: 28835a5180055c743a67828bf1d4461c, type: 3}

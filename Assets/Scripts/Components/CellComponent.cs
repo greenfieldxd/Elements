@@ -7,6 +7,7 @@ namespace Components
     public class CellComponent : MonoBehaviour
     {
         [SerializeField] private ElementType type;
+        [SerializeField] private int spriteLayerIndex;
 
         public ElementType Type => type;
         public ElementComponent Element { get; private set; }
@@ -14,9 +15,15 @@ namespace Components
         public void SetElement(ElementComponent elementComponent)
         {
             Element = elementComponent;
+            Element.SpriteRenderer.sortingOrder = spriteLayerIndex;
             var trElement = Element.transform;
             trElement.SetParent(transform);
             trElement.localPosition = Vector3.zero;
+        }
+
+        public void SetSpriteLayer(int value)
+        {
+            spriteLayerIndex = value;
         }
 
         private Color GetGizmosColor()
@@ -25,13 +32,12 @@ namespace Components
             {
                 case ElementType.None:
                     return Color.gray;
-                    break;
+                
                 case ElementType.Fire:
                     return Color.red;
-                    break;
+                
                 case ElementType.Water:
                     return Color.blue;
-                    break;
             }
             return Color.gray;
         }

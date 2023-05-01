@@ -16,12 +16,16 @@ namespace Tools
         [Button]
         private void CreateField()
         {
+            var count = 0;
+            
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
                     var position = new Vector2(x, y) * offsetPosModifier;
-                    Instantiate(cell, position, Quaternion.identity, transform);
+                    var newCell = Instantiate(cell, position, Quaternion.identity, transform);
+                    newCell.SetSpriteLayer(count);
+                    count++;
                 }
             }
         }
