@@ -1,10 +1,13 @@
 using System;
 using DefaultNamespace;
+using DG.Tweening;
+using Signals;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Components
 {
-    public class CellComponent : MonoBehaviour
+    public class CellComponent : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private ElementType type;
         [SerializeField] private int spriteLayerIndex;
@@ -18,9 +21,14 @@ namespace Components
             Element.SpriteRenderer.sortingOrder = spriteLayerIndex;
             var trElement = Element.transform;
             trElement.SetParent(transform);
-            trElement.localPosition = Vector3.zero;
+            trElement.DOLocalMove(Vector2.zero, 0.1f);
         }
 
+        public void Clear()
+        {
+            Element = null;
+        }
+        
         public void SetSpriteLayer(int value)
         {
             spriteLayerIndex = value;
@@ -40,6 +48,11 @@ namespace Components
                     return Color.blue;
             }
             return Color.gray;
+        }
+        
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            Supyrb.Signals.Get<ClickCellSignal>().Dispatch(this);
         }
         
         private void OnDrawGizmos()

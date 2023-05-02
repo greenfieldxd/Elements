@@ -3,7 +3,7 @@ using Supyrb;
 
 namespace Signals
 {
-    public class ClickElementSignal : Signal<ElementComponent>
+    public class ClickCellSignal : Signal<CellComponent>
     {
         
     }

@@ -1,5 +1,6 @@
 ﻿using Components;
 using Core;
+using Signals;
 using UnityEngine;
 
 namespace Systems
@@ -68,22 +69,22 @@ namespace Systems
 
         void OnSwipeUp()
         {
-            Debug.Log("Up");
+            Supyrb.Signals.Get<SwipeSignal>().Dispatch(SwipeType.Up);
         }
 
         void OnSwipeDown()
         {
-            Debug.Log("Down");
+            Supyrb.Signals.Get<SwipeSignal>().Dispatch(SwipeType.Down);
         }
 
         void OnSwipeLeft()
         {
-            Debug.Log("Left");
+            Supyrb.Signals.Get<SwipeSignal>().Dispatch(SwipeType.Left);
         }
 
         void OnSwipeRight()
         {
-            Debug.Log("Right");
+            Supyrb.Signals.Get<SwipeSignal>().Dispatch(SwipeType.Right);
         }
     }
 }
