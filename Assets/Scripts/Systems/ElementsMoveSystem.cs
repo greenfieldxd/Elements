@@ -16,6 +16,7 @@ namespace Systems
         {
             if (Data.currentClickedCell.Element != null)
             {
+                Data.haveInput = false;
                 Move(swipeType);
             }
             
@@ -71,6 +72,8 @@ namespace Systems
                     Data.currentClickedCell.Clear();
                     cellToSwap.SetElement(elementClicked);
                 }
+                
+                Supyrb.Signals.Get<NormalizeSignal>().Dispatch();
             }
         }
     }

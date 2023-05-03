@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Components;
 using Core;
@@ -14,18 +15,24 @@ namespace Systems
       public override void OnInit()
       {
          CreateLevel();
+         Data.haveInput = true;
       }
 
       private void CreateLevel()
       {
          var levelIndex = 0;
          var level = Instantiate(Config.Levels[levelIndex], levelSpawnPos, Quaternion.identity);
-         var cells = level.GetComponentsInChildren<CellComponent>();
+         Data.levelCells = level.GetComponentsInChildren<CellComponent>();
+         Data.elements ??= new List<ElementComponent>();
 
-         foreach (var cell in cells)
+         foreach (var cell in Data.levelCells)
          { 
-            var element = CreateElement(cell.Type); 
-            if (element != null) cell.SetElement(element);
+            var element = CreateElement(cell.Type);
+            if (element != null)
+            {
+               Data.elements.Add(element);
+               cell.SetElement(element);
+            }
          }
       }
 

@@ -14,6 +14,8 @@ namespace Systems
 
         public override void OnUpdate()
         {
+            if (!Data.haveInput) return;
+            
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 fingerUpPos = Input.mousePosition;
